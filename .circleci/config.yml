@@ -127,10 +127,10 @@ jobs:
       - checkout
       - run:
           name: Test Device Pixel 4 API 30 AOSP
-          command: ./code/gradlew -p code/edgebridge pixel4api30AsopPhoneDebugAndroidTest
+          command: ./code/gradlew -p code/edgebridge pixel4api30AospPhoneDebugAndroidTest
       - run:
           name: Test Device Pixel 4 API 33 AOSP
-          command: ./code/gradlew -p code/edgebridge pixel4api33AsopPhoneDebugAndroidTest
+          command: ./code/gradlew -p code/edgebridge pixel4api33AospPhoneDebugAndroidTest
 
       - store_test_results:
           path: code/edgebridge/build/reports/androidTests/managedDevice/flavors/phone/allDevices
