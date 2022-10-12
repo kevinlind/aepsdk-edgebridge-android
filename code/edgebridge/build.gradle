@@ -1,3 +1,5 @@
+import com.android.build.api.dsl.ManagedVirtualDevice
+
 plugins {
     id 'com.android.library'
     id 'jacoco'
@@ -57,6 +59,37 @@ android {
 
     testOptions {
         unitTests.returnDefaultValues = true
+
+        managedDevices {
+            devices {
+                pixel4api30Google (ManagedVirtualDevice) {
+                    device = "Pixel 4"
+                    apiLevel = 30
+                    systemImageSource = "google"
+                }
+                pixel4api30Aosp (ManagedVirtualDevice) {
+                    device = "Pixel 4"
+                    apiLevel = 30
+                    systemImageSource = "aosp-atd"
+                }
+                pixel4api33Google (ManagedVirtualDevice) {
+                    device = "Pixel 4"
+                    apiLevel = 33
+                    systemImageSource = "google"
+                }
+                pixel4api33Aosp (ManagedVirtualDevice) {
+                    device = "Pixel 4"
+                    apiLevel = 33
+                    systemImageSource = "aosp-atd"
+                }
+            }
+            groups {
+                phones {
+                    targetDevices.add(devices.pixel4api30Aosp)
+                    targetDevices.add(devices.pixel4api33Aosp)
+                }
+            }
+        }
     }
 
     compileOptions {
