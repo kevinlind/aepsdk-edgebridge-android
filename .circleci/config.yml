@@ -132,9 +132,19 @@ jobs:
       - run:
           name: List Android Image Licenses
           command: yes | $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --licenses || true
+
+      - run:
+          name: Update SDK Tools
+          command: $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --update || true
+      - run:
+          name: Test Device Pixel 4 API 30 Google
+          command: ./code/gradlew -p code/edgebridge pixel4api30GooglePhoneDebugAndroidTest || true
+      - run:
+          name: Test Device Pixel 4 API 33 Google
+          command: ./code/gradlew -p code/edgebridge pixel4api33GooglePhoneDebugAndroidTest || true
       - run:
           name: Test Device Pixel 4 API 30 AOSP
-          command: ./code/gradlew -p code/edgebridge pixel4api30AospPhoneDebugAndroidTest
+          command: ./code/gradlew -p code/edgebridge pixel4api30AospPhoneDebugAndroidTest || true
       - run:
           name: Test Device Pixel 4 API 33 AOSP
           command: ./code/gradlew -p code/edgebridge pixel4api33AospPhoneDebugAndroidTest
