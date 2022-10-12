@@ -14,6 +14,9 @@ workflows:
       - functional-test:
           requires:
             - validate-code
+      - device-test:
+          requires:
+            - validate-code
  
 jobs:
   validate-code:
@@ -114,4 +117,27 @@ jobs:
       - store_test_results:
           path: ci/functional-test/build/outputs/androidTest-results
           
-    
+  device-test:
+    executor:
+      name: android/android-machine
+      resource-class: large
+    steps:
+      - checkout
+      - run:
+          name: Test Device Pixel 4 API 30 Google
+          command: ./code/gradlew -p code/edgebridge pixel4api30GooglePhoneDebugAndroidTest
+      - run:
+          name: Test Device Pixel 4 API 33 Google
+          command: ./code/gradlew -p code/edgebridge pixel4api33GooglePhoneDebugAndroidTest
+      - run:
+          name: Test Device Pixel 4 API 30 AOSP
+          command: ./code/gradlew -p code/edgebridge pixel4api30AsopPhoneDebugAndroidTest
+      - run:
+          name: Test Device Pixel 4 API 33 AOSP
+          command: ./code/gradlew -p code/edgebridge pixel4api33AsopPhoneDebugAndroidTest
+
+      - store_test_results:
+          path: code/edgebridge/build/reports/androidTests/managedDevice/flavors/phone/allDevices
+
+
+
