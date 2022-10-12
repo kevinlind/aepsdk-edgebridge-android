@@ -126,12 +126,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Test Device Pixel 4 API 30 Google
-          command: ./code/gradlew -p code/edgebridge pixel4api30GooglePhoneDebugAndroidTest
-      - run:
-          name: Test Device Pixel 4 API 33 Google
-          command: ./code/gradlew -p code/edgebridge pixel4api33GooglePhoneDebugAndroidTest
-      - run:
           name: Test Device Pixel 4 API 30 AOSP
           command: ./code/gradlew -p code/edgebridge pixel4api30AsopPhoneDebugAndroidTest
       - run:
