@@ -131,7 +131,7 @@ jobs:
 
       - run:
           name: List Android Image Licenses
-          command: $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --licenses --channel=3
+          command: yes | $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --licenses
       - run:
           name: Test Device Pixel 4 API 30 AOSP
           command: ./code/gradlew -p code/edgebridge pixel4api30AospPhoneDebugAndroidTest
