@@ -118,9 +118,11 @@ jobs:
           path: ci/functional-test/build/outputs/androidTest-results
           
   device-test:
-    executor:
-      name: android/android-machine
-      resource-class: large
+    working_directory: ~/code
+    docker:
+      - image: cimg/android:2022.09.2-node
+    environment:
+      JVM_OPTS: -Xmx4608m
     steps:
       - checkout
       - run:
