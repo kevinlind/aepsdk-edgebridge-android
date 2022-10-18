@@ -86,7 +86,7 @@ android {
             groups {
                 phones {
                     targetDevices.add(devices.pixel4api30Aosp)
-                    targetDevices.add(devices.pixel4api33GoogleATD)
+                    targetDevices.add(devices.pixel4api33Google)
                 }
             }
         }

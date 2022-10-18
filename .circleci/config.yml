@@ -134,18 +134,10 @@ jobs:
       - run:
           name: Update SDK Tools
           command: $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --update || true
+
       - run:
-          name: Test Device Pixel 4 API 30 Google
-          command: ./code/gradlew -p code/edgebridge pixel4api30GooglePhoneDebugAndroidTest || true
-      - run:
-          name: Test Device Pixel 4 API 33 Google
-          command: ./code/gradlew -p code/edgebridge pixel4api33GooglePhoneDebugAndroidTest || true
-      - run:
-          name: Test Device Pixel 4 API 30 AOSP
-          command: ./code/gradlew -p code/edgebridge pixel4api30AospPhoneDebugAndroidTest || true
-      - run:
-          name: Test Device Pixel 4 API 33 Google ATD
-          command: ./code/gradlew -p code/edgebridge pixel4api33GoogleATDPhoneDebugAndroidTest
+          name: Test Device Group
+          command: ./code/gradlew -p code/edgebridge phonesGroupPhoneDebugAndroidTest || true
 
       - store_test_results:
           path: code/edgebridge/build/reports/androidTests/managedDevice/flavors/phone/allDevices
