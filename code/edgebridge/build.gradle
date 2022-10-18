@@ -77,16 +77,16 @@ android {
                     apiLevel = 33
                     systemImageSource = "google"
                 }
-                pixel4api33Aosp (ManagedVirtualDevice) {
+                pixel4api33GoogleATD (ManagedVirtualDevice) {
                     device = "Pixel 4"
                     apiLevel = 33
-                    systemImageSource = "aosp-atd"
+                    systemImageSource = "google-atd"
                 }
             }
             groups {
                 phones {
                     targetDevices.add(devices.pixel4api30Aosp)
-                    targetDevices.add(devices.pixel4api33Aosp)
+                    targetDevices.add(devices.pixel4api33GoogleATD)
                 }
             }
         }
