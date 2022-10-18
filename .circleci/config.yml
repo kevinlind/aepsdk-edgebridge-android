@@ -118,11 +118,9 @@ jobs:
           path: ci/functional-test/build/outputs/androidTest-results
           
   device-test:
-    working_directory: ~/code
-    docker:
-      - image: cimg/android:2022.09.2-node
-    environment:
-      JVM_OPTS: -Xmx4608m
+    executor:
+      name: android/android-machine
+      resource-class: large
     steps:
       - checkout
       - run:
@@ -146,8 +144,8 @@ jobs:
           name: Test Device Pixel 4 API 30 AOSP
           command: ./code/gradlew -p code/edgebridge pixel4api30AospPhoneDebugAndroidTest || true
       - run:
-          name: Test Device Pixel 4 API 33 AOSP
-          command: ./code/gradlew -p code/edgebridge pixel4api33AospPhoneDebugAndroidTest
+          name: Test Device Pixel 4 API 33 Google ATD
+          command: ./code/gradlew -p code/edgebridge pixel4api33GoogleATDPhoneDebugAndroidTest
 
       - store_test_results:
           path: code/edgebridge/build/reports/androidTests/managedDevice/flavors/phone/allDevices
